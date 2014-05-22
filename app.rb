@@ -6,10 +6,11 @@ require './lib/food_truck'
 require './lib/human_location'
 
 get '/' do
-  <<-EOS
-<pre>
-Lunch trucks:
+  body = <<-EOS
+Lunch trucks near Downtown Crossing:
+
 #{FoodTruck.new.all}
-</pre>
   EOS
+
+  [200, {'Content-Type' => 'text/plain'}, body]
 end
