@@ -43,10 +43,14 @@ class FoodTruck
     end
 
     def location
-      css('.loc').text.split(';').last.sub(/^\(\d+\) /, '')
+      HumanLocation.normalize(less_human_location)
     end
 
     private
+
+    def less_human_location
+      css('.loc').text.split(';').last.sub(/^\(\d+\) /, '')
+    end
 
     def day_is_today?
       css('.dow').text == day_of_week
