@@ -6,7 +6,6 @@ class FoodTruck
   end
 
   def all
-    available_trucks = all_available
     if available_trucks.empty?
       NO_FOOD_TRUCKS
     else
@@ -17,9 +16,12 @@ class FoodTruck
 
   private
 
-  def all_available
-    @doc.css('.trFoodTrucks').map do |element|
-      Truck.new(element)
-    end.select(&:available?)
+  def available_trucks
+    @available_trucks ||= truck_elements.map { |element| Truck.new(element) }.select(&:available?)
+  end
+
+  def truck_elements
+    @doc.css('.trFoodTrucks')
   end
 end
+
