@@ -2,8 +2,10 @@ require 'bundler'
 Bundler.require
 
 require 'open-uri'
-require './lib/food_truck'
-require './lib/human_location'
+
+Dir['./lib/*'].each do |f|
+  require f
+end
 
 get '/' do
   body = <<-EOS
