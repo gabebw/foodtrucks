@@ -11,7 +11,7 @@ class FoodTruck
       NO_FOOD_TRUCKS
     else
       longest_truck_name_length = available_trucks.max_by { |truck| truck.name.size }.name.size
-      available_trucks.sort_by(&:location).map { |truck| truck.pretty_information(longest_truck_name_length) }.join("\n")
+      available_trucks.sort_by(&:humanized_location).map { |truck| truck.pretty_information(longest_truck_name_length) }.join("\n")
     end
   end
 
