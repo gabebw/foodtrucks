@@ -1,9 +1,11 @@
 class Truck
   NEAR_OFFICE = /Financial|(South Station)|Greenway|(City Hall)|(Dewey Square)|(Boston Common)|Chinatown/
+
   MENU_URLS = {
     "Bon Me" => "http://www.bonmetruck.com/menu/",
     "Evan's NY Style Deli" => "http://www.evansnewyorkstyledeli.com/our-food-truck/food-truck-menu/",
     "Mei Mei Street Kitchen" => "http://meimeiboston.tumblr.com/",
+    "Momogoose" => "http://sategrill.com/cafe-menu/",
   }
 
   def initialize(xml_element)
@@ -29,7 +31,7 @@ class Truck
   end
 
   def name
-    css('.com a').text
+    css('.com a').text.sub(/ *\d$/, '')
   end
 
   def humanized_location
