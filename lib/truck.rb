@@ -1,5 +1,10 @@
 class Truck
   NEAR_OFFICE = /Financial|(South Station)|Greenway|(City Hall)|(Dewey Square)|(Boston Common)|Chinatown/
+  MENU_URLS = {
+    "Bon Me" => "http://www.bonmetruck.com/menu/",
+    "Evan's NY Style Deli" => "http://www.evansnewyorkstyledeli.com/our-food-truck/food-truck-menu/",
+    "Mei Mei Street Kitchen" => "http://meimeiboston.tumblr.com/",
+  }
 
   def initialize(xml_element)
     @element = xml_element
@@ -10,7 +15,17 @@ class Truck
   end
 
   def pretty_information(justification)
-    "%-#{justification}s @ #{humanized_location}" % name
+    difference = justification - name.size
+    spacing = '&nbsp;' * difference
+    "%s#{spacing} @ #{humanized_location}" % name_with_url
+  end
+
+  def name_with_url
+    if MENU_URLS.key?(name)
+      %{<a href="#{MENU_URLS[name]}">#{name}</a>}
+    else
+      name
+    end
   end
 
   def name

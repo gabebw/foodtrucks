@@ -9,10 +9,12 @@ end
 
 get '/' do
   body = <<-EOS
+  <pre>
 Lunch trucks near Downtown Crossing:
 
 #{FoodTruck.new.all}
+</pre>
   EOS
 
-  [200, {'Content-Type' => 'text/plain'}, body]
+  body
 end
