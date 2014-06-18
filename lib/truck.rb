@@ -1,6 +1,4 @@
 class Truck
-  NEAR_OFFICE = /Financial|(South Station)|Greenway|(City Hall)|(Dewey Square)|(Boston Common)|Chinatown/
-
   MENU_URLS = {
     "Bon Me" => "http://www.bonmetruck.com/menu/",
     "Evan's NY Style Deli" => "http://www.evansnewyorkstyledeli.com/our-food-truck/food-truck-menu/",
