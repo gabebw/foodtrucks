@@ -8,13 +8,10 @@ Dir['./lib/*'].each do |f|
 end
 
 get '/' do
-  body = <<-EOS
-  <pre>
+  <<-EOS
+<pre>
 Lunch trucks near Downtown Crossing:
-
 #{FoodTruck.new.all}
 </pre>
   EOS
-
-  body
 end

@@ -1,4 +1,6 @@
 class PrettyPrinter
+  LINE_PREFIX = "\n&#9493; "
+
   def initialize(trucks)
     @trucks = trucks
   end
@@ -10,8 +12,11 @@ class PrettyPrinter
   private
 
   def all_trucks_pretty_printed
-    @trucks.sort_by(&:humanized_location).map do |truck|
-      pretty_information(truck)
+    hash = Hash.new { |h, k| h[k] = [] }
+    @trucks.each { |truck| hash[truck.humanized_location] << truck }
+    hash.map do |location, trucks|
+      pretty_trucks = trucks.map(&:name_with_url).join(LINE_PREFIX)
+      "\n<b>#{location}</b>#{LINE_PREFIX}#{pretty_trucks}"
     end
   end
 
