@@ -9,12 +9,7 @@ class FoodTruck
     if available_trucks.empty?
       NO_FOOD_TRUCKS
     else
-      longest_truck_name_length = available_trucks.max_by { |truck| truck.name.size }.name.size
-      truck_information = available_trucks.sort_by(&:humanized_location).map do |truck|
-        truck.pretty_information(longest_truck_name_length)
-      end
-
-      truck_information.join("\n")
+      PrettyPrinter.new(available_trucks).print
     end
   end
 

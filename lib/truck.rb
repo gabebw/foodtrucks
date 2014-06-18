@@ -14,12 +14,6 @@ class Truck
     day_is_today? && available_for_lunch? && near_office?
   end
 
-  def pretty_information(justification)
-    difference = justification - name.size
-    spacing = '&nbsp;' * difference
-    "%s#{spacing} @ #{humanized_location}" % name_with_url
-  end
-
   def name_with_url
     if MENU_URLS.key?(name)
       %{<a href="#{MENU_URLS[name]}">#{name}</a>}
