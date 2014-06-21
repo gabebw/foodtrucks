@@ -11,13 +11,11 @@ get '/' do
   available_trucks = AvailableFoodTrucks.all
   pretty_printer = PrettyPrinter.new(available_trucks)
 
-  body = <<-EOS
+  <<-EOS
   <pre>
 Lunch trucks near Downtown Crossing:
 
 #{pretty_printer.print}
 </pre>
   EOS
-
-  body
 end
