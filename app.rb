@@ -8,11 +8,14 @@ Dir['./lib/*'].each do |f|
 end
 
 get '/' do
+  available_trucks = AvailableFoodTrucks.all
+  pretty_printer = PrettyPrinter.new(available_trucks)
+
   body = <<-EOS
   <pre>
 Lunch trucks near Downtown Crossing:
 
-#{FoodTruck.new.all}
+#{pretty_printer.print}
 </pre>
   EOS
 

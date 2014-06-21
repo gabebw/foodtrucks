@@ -1,10 +1,16 @@
 class PrettyPrinter
+  NO_FOOD_TRUCKS = "No food trucks available for lunch today."
+
   def initialize(trucks)
     @trucks = trucks
   end
 
   def print
-    all_trucks_pretty_printed.join("\n")
+    if @trucks.empty?
+      NO_FOOD_TRUCKS
+    else
+      all_trucks_pretty_printed.join("\n")
+    end
   end
 
   private

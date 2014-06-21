@@ -1,26 +1,63 @@
 class FoodTruck
-  NO_FOOD_TRUCKS = "No food trucks available for lunch today."
+  MENU_URLS = {
+    "Bon Me" => "http://www.bonmetruck.com/menu/",
+    "Evan's NY Style Deli" => "http://www.evansnewyorkstyledeli.com/our-food-truck/food-truck-menu/",
+    "Mei Mei Street Kitchen" => "http://meimeiboston.tumblr.com/",
+    "Momogoose" => "http://sategrill.com/cafe-menu/",
+  }
 
-  def initialize
-    @doc = Nokogiri::HTML(open('http://www.cityofboston.gov/business/mobile/schedule-app-min.asp'))
+  def initialize(xml_element)
+    @element = xml_element
   end
 
-  def all
-    if available_trucks.empty?
-      NO_FOOD_TRUCKS
+  def available?
+    day_is_today? && available_for_lunch? && near_office?
+  end
+
+  def name_with_url
+    if MENU_URLS.key?(name)
+      %{<a href="#{MENU_URLS[name]}">#{name}</a>}
     else
-      PrettyPrinter.new(available_trucks).print
+      name
     end
+  end
+
+  def name
+    css('.com a').text.sub(/ *\d$/, '')
+  end
+
+  def humanized_location
+    location.humanized
   end
 
   private
 
-  def available_trucks
-    @available_trucks ||= truck_elements.map { |element| Truck.new(element) }.select(&:available?)
+  def location
+    @location ||= Location.new(less_human_location)
   end
 
-  def truck_elements
-    @doc.css('.trFoodTrucks')
+  def less_human_location
+    location_without_document_write = css('.loc').text.split(';').last
+    location_without_document_write.sub(/^\(\d+\) /, '')
+  end
+
+  def day_is_today?
+    css('.dow').text == day_of_week
+  end
+
+  def available_for_lunch?
+    css('.tod').text == 'Lunch'
+  end
+
+  def near_office?
+    location.near_office?
+  end
+
+  def css(selector)
+    @element.css(selector)
+  end
+
+  def day_of_week
+    Time.now.strftime("%A")
   end
 end
-
