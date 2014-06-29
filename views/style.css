@@ -1,5 +1,6 @@
 #container {
-  margin: 2em 0 0 2em;
+  margin: 3em auto;
+  width: 60%;
 }
 
 h2, table  {
