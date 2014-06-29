@@ -1,0 +1,16 @@
+#container {
+  margin: 2em 0 0 2em;
+}
+
+h2, table  {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+}
