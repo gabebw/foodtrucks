@@ -9,9 +9,13 @@ Dir['./lib/*'].each do |f|
   require f
 end
 
-get '/' do
-  cache_control :public, max_age: ONE_DAY
+configure :production do
+  before do
+    cache_control :public, max_age: ONE_DAY
+  end
+end
 
+get '/' do
   @trucks = AvailableFoodTrucks.all
 
   erb :index
