@@ -1,8 +1,7 @@
-<h2>Lunch trucks near Downtown Crossing today</h2>
-
 <% if @trucks.empty? %>
-  <h2>No food trucks available for lunch today.</h2>
+  <h2>No food trucks available for lunch today :(</h2>
 <% else %>
+  <h2>Lunch trucks near Downtown Crossing today</h2>
   <% @trucks.each do |truck| %>
     <table>
       <thead>
