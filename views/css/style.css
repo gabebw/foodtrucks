@@ -1,10 +1,7 @@
 #container {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   margin: 3em auto;
   width: 60%;
-}
-
-h2, table  {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 table {
@@ -14,4 +11,8 @@ table {
 td, th {
   border: 1px solid #ddd;
   padding: 6px 10px;
+}
+
+a i {
+  color: #55ACEE;
 }

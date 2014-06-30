@@ -1,11 +1,5 @@
 class FoodTruck
   TIME_ZONE = "Eastern Time (US & Canada)"
-  MENU_URLS = {
-    "Bon Me" => "http://www.bonmetruck.com/menu/",
-    "Evan's NY Style Deli" => "http://www.evansnewyorkstyledeli.com/our-food-truck/food-truck-menu/",
-    "Mei Mei Street Kitchen" => "http://meimeiboston.tumblr.com/",
-    "Momogoose" => "http://sategrill.com/cafe-menu/",
-  }
 
   def initialize(xml_element)
     @element = xml_element
@@ -16,11 +10,7 @@ class FoodTruck
   end
 
   def name_with_url
-    if MENU_URLS.key?(name)
-      %{<a href="#{MENU_URLS[name]}">#{name}</a>}
-    else
-      name
-    end
+    PrettyNamePrinter.new(name).print
   end
 
   def name

@@ -21,6 +21,13 @@ get '/' do
   erb :index
 end
 
-get '/style.css' do
-  send_file(settings.views + '/style.css', disposition: 'inline')
+get '/:name.css' do
+  send_file(settings.views + "/css/#{params[:name]}.css")
+end
+
+get '/font/fontello.*' do
+  extension = params[:splat].first
+  path = settings.views + "/font/fontello.#{extension}"
+
+  send_file(path)
 end
