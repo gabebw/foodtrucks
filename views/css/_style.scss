@@ -1,5 +1,8 @@
+$twitter-blue: #55ACEE;
+$sans-serif: "Helvetica Neue", Helvetica, sans-serif;
+
 #container {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: $sans-serif;
   margin: 3em auto;
   width: 70%;
 }
@@ -18,7 +21,7 @@ td a:visited {
 }
 
 a i {
-  color: #55ACEE;
+  color: $twitter-blue;
 }
 
 @media only screen

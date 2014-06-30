@@ -22,7 +22,8 @@ get '/' do
 end
 
 get '/:name.css' do
-  send_file(settings.views + "/css/#{params[:name]}.css")
+  scss :"css/#{params[:name]}"
+  # send_file(settings.views + "/css/#{params[:name]}.css")
 end
 
 get '/font/fontello.*' do
