@@ -1,4 +1,5 @@
 class FoodTruck
+  TIME_ZONE = "Eastern Time (US & Canada)"
   MENU_URLS = {
     "Bon Me" => "http://www.bonmetruck.com/menu/",
     "Evan's NY Style Deli" => "http://www.evansnewyorkstyledeli.com/our-food-truck/food-truck-menu/",
@@ -58,6 +59,12 @@ class FoodTruck
   end
 
   def day_of_week
-    Time.now.strftime("%A")
+    now.strftime("%A")
+  end
+
+  private
+
+  def now
+    Time.now.in_time_zone(TIME_ZONE)
   end
 end
