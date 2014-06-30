@@ -9,8 +9,12 @@ class FoodTruck
     day_is_today? && available_for_lunch? && near_office?
   end
 
-  def name_with_url
-    PrettyNamePrinter.new(name).print
+  def name_with_menu
+    pretty_name_printer.name_with_menu
+  end
+
+  def twitter_link
+    pretty_name_printer.twitter_link
   end
 
   def name
@@ -57,6 +61,10 @@ class FoodTruck
   end
 
   private
+
+  def pretty_name_printer
+    @pretty_name_printer ||= PrettyNamePrinter.new(name)
+  end
 
   def now
     Time.now.in_time_zone(TIME_ZONE)

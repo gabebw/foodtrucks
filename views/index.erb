@@ -7,6 +7,7 @@
     <thead>
       <tr>
         <th align="left">Name</th>
+        <th align="left">Twitter</th>
         <th align="left">Location</th>
       </tr>
     </thead>
@@ -14,7 +15,11 @@
       <% @trucks.each do |truck| %>
         <tr>
           <td>
-            <%= truck.name_with_url %>
+            <%= truck.name_with_menu %>
+          </td>
+
+          <td>
+            <%= truck.twitter_link %>
           </td>
 
           <td>

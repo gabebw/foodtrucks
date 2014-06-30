@@ -21,12 +21,6 @@ class PrettyNamePrinter
     @name = name
   end
 
-  def print
-    name_with_menu + twitter
-  end
-
-  private
-
   def name_with_menu
     if MENU_URLS.key?(@name)
       %{<a href="#{MENU_URLS[@name]}">#{@name}</a>}
@@ -35,7 +29,7 @@ class PrettyNamePrinter
     end
   end
 
-  def twitter
+  def twitter_link
     if TWITTER_NAMES.key?(@name)
       %{ <a href="https://twitter.com/#{TWITTER_NAMES[@name]}"><i class="icon-twitter-bird"></i></a>}
     else
