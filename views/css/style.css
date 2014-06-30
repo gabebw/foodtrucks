@@ -13,6 +13,10 @@ td, th {
   padding: 6px 10px;
 }
 
+td a:visited {
+  color: blue;
+}
+
 a i {
   color: #55ACEE;
 }
