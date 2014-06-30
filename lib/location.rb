@@ -9,6 +9,10 @@ class Location
     HumanLocation.normalize(@location)
   end
 
+  def distance
+    Distance.weight(humanized)
+  end
+
   def near_office?
     @location =~ NEAR_OFFICE
   end

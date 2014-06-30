@@ -31,6 +31,10 @@ class FoodTruck
     location.humanized
   end
 
+  def distance_and_location
+    [location.distance, location.humanized]
+  end
+
   private
 
   def location

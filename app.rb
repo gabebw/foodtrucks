@@ -16,7 +16,7 @@ configure :production do
 end
 
 get '/' do
-  @trucks = AvailableFoodTrucks.all.sort_by(&:humanized_location)
+  @trucks = AvailableFoodTrucks.all.sort_by(&:distance_and_location)
 
   erb :index
 end
