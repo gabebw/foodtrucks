@@ -2,15 +2,15 @@
   <h2>No food trucks available for lunch today :(</h2>
 <% else %>
   <h2>Lunch trucks near Downtown Crossing today</h2>
-  <% @trucks.each do |truck| %>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">Name</th>
-          <th align="left">Location</th>
-        </tr>
-      </thead>
-      <tbody>
+  <table>
+    <thead>
+      <tr>
+        <th align="left">Name</th>
+        <th align="left">Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @trucks.each do |truck| %>
         <tr>
           <td>
             <%= truck.name_with_url %>
@@ -20,7 +20,7 @@
             <%= truck.humanized_location %>
           </td>
         </tr>
-      </tbody>
-    </table>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
