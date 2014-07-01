@@ -52,8 +52,6 @@ class FoodTruck
     now.strftime("%A")
   end
 
-  private
-
   def now
     Time.now.in_time_zone(TIME_ZONE)
   end
