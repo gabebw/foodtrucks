@@ -11,7 +11,9 @@ Dir['./lib/*'].each do |f|
 end
 
 get '/' do
-  @trucks = AvailableFoodTrucks.all_for("boston").sort_by(&:distance_and_location)
+  @trucks = AllFoodTrucks.all_for("boston").
+    select(&:available?).
+    sort_by(&:distance_and_location)
 
   erb :index
 end
@@ -23,4 +25,11 @@ end
 get '/font/fontello.*' do
   relative_path = request.path_info
   send_file(settings.views + relative_path)
+end
+
+get '/api/boston.json' do
+  @trucks = AllFoodTrucks.all_for("boston").
+    sort_by(&:distance_and_location)
+
+  @trucks.inspect
 end

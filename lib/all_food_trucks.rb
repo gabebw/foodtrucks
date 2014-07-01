@@ -1,4 +1,4 @@
-class AvailableFoodTrucks
+class AllFoodTrucks
   def self.all_for(city)
     new(city).all
   end
@@ -11,9 +11,8 @@ class AvailableFoodTrucks
     if @city == "boston"
       sources = boston_truck_elements.map { |element| BostonTruckDataSource.new(element) }
     end
-    trucks = sources.map { |source| FoodTruck.new(source) }
 
-    trucks.select(&:available?)
+    sources.map { |source| FoodTruck.new(source) }
   end
 
   private
