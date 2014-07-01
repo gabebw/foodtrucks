@@ -1,33 +1,60 @@
 class PrettyNamePrinter
-  MENU_URLS = {
-    "Bon Me" => "http://www.bonmetruck.com/menu/",
-    "Cookie Monstah" => "http://thecookiemonstah.com/ox_portfolio/portfolio/",
-    "Evan's NY Style Deli" => "http://www.evansnewyorkstyledeli.com/our-food-truck/food-truck-menu/",
-    "Mei Mei Street Kitchen" => "http://meimeiboston.tumblr.com/",
-    "Meng's Kitchen" => 'http://www.yelp.com/biz/mengs-kitchen-boston?hrid=KCvaa0cLk5nWAARnQUNdww',
-    "Momogoose" => "http://sategrill.com/cafe-menu/",
-    "Moyzilla" => "http://boston.menupages.com/restaurants/moyzilla/menu",
-    "Paris Creperie" => "http://pariscreperie.com/la-tour-eiffel-bostons-very-first-crepe-truck/",
-    "Roxy's Gourmet Grilled Cheese" => 'http://www.roxysgrilledcheese.com/menu/',
-    "Stoked Wood Fired Pizza Co." => "http://www.stokedpizzaco.com/menu",
-    "Tenoch Mexican" => "http://www.tenochmexican.com/menu/",
-    "The Dining Car" => "http://diningcar.net/menu/",
-  }
-
-  TWITTER_NAMES = {
-    "Baja Taco Truck" => "BajaTacoTruck",
-    "Chubby Chickpea" => "chubbyfoodtruck",
-    "Bon Me" => "bonme",
-    "Chicken & Rice Guys" => "CnRG_Boston",
-    "Cookie Monstah" => "MonstahTruck",
-    "Mei Mei Street Kitchen" => "meimeiboston",
-    "Momogoose" => "momogoose",
-    "Moyzilla" => "MoyzillaTruck",
-    "Paris Creperie" => "ParisCreperie",
-    "Roxy's Gourmet Grilled Cheese" => "RoxysGrilledChz",
-    "Stoked Wood Fired Pizza Co." => "StokedPizza",
-    "Tenoch Mexican" => "TenochMexican",
-    "The Dining Car" => "thediningcar",
+  PRETTY = {
+    "Baja Taco Truck" => {
+      twitter: "BajaTacoTruck"
+    },
+    "Bon Me" => {
+      menu: "http://www.bonmetruck.com/menu/",
+      twitter: "bonme"
+    },
+    "Chicken & Rice Guys" => {
+      twitter: "CnRG_Boston",
+    },
+    "Chubby Chickpea" => {
+      twitter: "chubbyfoodtruck",
+    },
+    "Cookie Monstah" => {
+      menu: "http://thecookiemonstah.com/ox_portfolio/portfolio/",
+      twitter: "MonstahTruck"
+    },
+    "Evan's NY Style Deli" => {
+      menu: "http://www.evansnewyorkstyledeli.com/our-food-truck/food-truck-menu/",
+    },
+    "Mei Mei Street Kitchen" => {
+      menu: "http://meimeiboston.tumblr.com/",
+      twitter: "meimeiboston"
+    },
+    "Meng's Kitchen" => {
+      menu: "http://www.yelp.com/biz/mengs-kitchen-boston?hrid=KCvaa0cLk5nWAARnQUNdww",
+    },
+    "Momogoose" => {
+      menu: "http://sategrill.com/cafe-menu/",
+      twitter: "momogoose"
+    },
+    "Moyzilla" => {
+      menu: "http://boston.menupages.com/restaurants/moyzilla/menu",
+      twitter: "MoyzillaTruck"
+    },
+    "Paris Creperie" => {
+      menu: "http://pariscreperie.com/la-tour-eiffel-bostons-very-first-crepe-truck/",
+      twitter: "ParisCreperie"
+    },
+    "Roxy's Gourmet Grilled Cheese" => {
+      menu: "http://www.roxysgrilledcheese.com/menu/",
+      twitter: "RoxysGrilledChz"
+    },
+    "Stoked Wood Fired Pizza Co." => {
+      menu: "http://www.stokedpizzaco.com/menu",
+      twitter: "StokedPizza"
+    },
+    "Tenoch Mexican" => {
+      menu:  "http://www.tenochmexican.com/menu/",
+      twitter: "TenochMexican"
+    },
+    "The Dining Car" => {
+      menu: "http://diningcar.net/menu/",
+      twitter: "thediningcar"
+    }
   }
 
   def initialize(name)
@@ -35,18 +62,24 @@ class PrettyNamePrinter
   end
 
   def name_with_menu
-    if MENU_URLS.key?(@name)
-      %{<a href="#{MENU_URLS[@name]}">#{@name}</a>}
+    if pretty.key?(:menu)
+      %{<a href="#{pretty[:menu]}">#{@name}</a>}
     else
       @name
     end
   end
 
   def twitter_link
-    if TWITTER_NAMES.key?(@name)
-      %{ <a href="https://twitter.com/#{TWITTER_NAMES[@name]}"><i class="icon-twitter-bird"></i></a>}
+    if pretty.key?(:twitter)
+      %{ <a href="https://twitter.com/#{pretty[:twitter]}"><i class="icon-twitter-bird"></i></a>}
     else
       ''
     end
+  end
+
+  private
+
+  def pretty
+    PRETTY[@name] || {}
   end
 end
