@@ -3,6 +3,7 @@ Bundler.require
 
 require 'open-uri'
 require 'yaml'
+require 'json'
 
 DATA_DIRECTORY = File.join(settings.root, "data")
 
@@ -31,5 +32,13 @@ get '/api/boston.json' do
   @trucks = AllFoodTrucks.all_for("boston").
     sort_by(&:distance_and_location)
 
-  @trucks.inspect
+  data = @trucks.map do |truck|
+    {
+      ugly_location: truck.ugly_location,
+      humanized_location: truck.humanized_location,
+      name: truck.name,
+    }
+  end
+
+  JSON.dump(data)
 end

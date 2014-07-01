@@ -23,14 +23,14 @@ class FoodTruck
     [location.distance, location.humanized]
   end
 
-  def raw_location
-    @source.location
+  def ugly_location
+    location.ugly
   end
 
   private
 
   def location
-    @location ||= Location.new(raw_location)
+    @location ||= Location.new(@source.location)
   end
 
   def day_is_today?

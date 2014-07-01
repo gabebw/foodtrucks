@@ -5,6 +5,10 @@ class Location
     @ugly_location = ugly_location
   end
 
+  def ugly
+    HumanLocation.clean(@ugly_location)
+  end
+
   def humanized
     HumanLocation.normalize(@ugly_location)
   end
