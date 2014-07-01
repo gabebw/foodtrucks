@@ -1,11 +1,11 @@
 class AvailableFoodTrucks
+  def self.all_for(city)
+    new(city).all
+  end
+
   def initialize(city)
     @city = city
     @doc = Nokogiri::HTML(open('http://www.cityofboston.gov/business/mobile/schedule-app-min.asp'))
-  end
-
-  def self.all_for(city)
-    new(city).all
   end
 
   def all
