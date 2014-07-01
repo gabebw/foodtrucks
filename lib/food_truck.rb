@@ -1,9 +1,6 @@
 class FoodTruck
-  TIME_ZONE = "Eastern Time (US & Canada)"
-  BOSTON_TRUCK_DATA = YAML.load(open(File.join(DATA_DIRECTORY, "boston.yml")))
-
-  def initialize(xml_element)
-    @element = xml_element
+  def initialize(source)
+    @source = source
   end
 
   def available?
@@ -11,11 +8,11 @@ class FoodTruck
   end
 
   def data
-    BOSTON_TRUCK_DATA[name]
+    @source.data[name]
   end
 
   def name
-    css('.com a').text.sub(/ *\d$/, '')
+    @source.name
   end
 
   def humanized_location
@@ -29,23 +26,19 @@ class FoodTruck
   private
 
   def location
-    @location ||= Location.new(css('.loc').text)
+    @location ||= Location.new(@source.location)
   end
 
   def day_is_today?
-    css('.dow').text == day_of_week
+    @source.day_available == day_of_week
   end
 
   def available_for_lunch?
-    css('.tod').text == 'Lunch'
+    @source.meal == 'Lunch'
   end
 
   def near_office?
     location.near_office?
-  end
-
-  def css(selector)
-    @element.css(selector)
   end
 
   def day_of_week
@@ -53,6 +46,6 @@ class FoodTruck
   end
 
   def now
-    Time.now.in_time_zone(TIME_ZONE)
+    Time.now.in_time_zone(@source.time_zone)
   end
 end

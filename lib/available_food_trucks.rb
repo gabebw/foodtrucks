@@ -1,14 +1,20 @@
 class AvailableFoodTrucks
-  def initialize
+  def initialize(city)
+    @city = city
     @doc = Nokogiri::HTML(open('http://www.cityofboston.gov/business/mobile/schedule-app-min.asp'))
   end
 
-  def self.all
-    new.all
+  def self.all_for(city)
+    new(city).all
   end
 
   def all
-    truck_elements.map { |element| FoodTruck.new(element) }.select(&:available?)
+    if @city == "boston"
+      sources = truck_elements.map { |element| BostonTruckDataSource.new(element) }
+    end
+    trucks = sources.map { |source| FoodTruck.new(source) }
+
+    trucks.select(&:available?)
   end
 
   private
