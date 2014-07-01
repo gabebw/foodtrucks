@@ -1,5 +1,6 @@
 class FoodTruck
   TIME_ZONE = "Eastern Time (US & Canada)"
+  TRUCK_DATA = YAML.load(open(File.join(DATA_DIRECTORY, "boston.yml")))
 
   def initialize(xml_element)
     @element = xml_element
@@ -9,12 +10,8 @@ class FoodTruck
     day_is_today? && available_for_lunch? && near_office?
   end
 
-  def name_with_menu
-    pretty_name_printer.name_with_menu
-  end
-
-  def twitter_link
-    pretty_name_printer.twitter_link
+  def data
+    TRUCK_DATA[name]
   end
 
   def name
@@ -61,10 +58,6 @@ class FoodTruck
   end
 
   private
-
-  def pretty_name_printer
-    @pretty_name_printer ||= PrettyNamePrinter.new(name)
-  end
 
   def now
     Time.now.in_time_zone(TIME_ZONE)

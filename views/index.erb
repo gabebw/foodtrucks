@@ -15,11 +15,19 @@
       <% @trucks.each do |truck| %>
         <tr>
           <td>
-            <%= truck.name_with_menu %>
+            <% if truck.data[:menu] %>
+              <a href="<%= truck.data[:menu] %>"><%= truck.name %></a>
+            <% else %>
+              <%= truck.name %>
+            <% end %>
           </td>
 
           <td>
-            <%= truck.twitter_link %>
+            <% if truck.data[:twitter] %>
+              <a href="https://twitter.com/<%= truck.data[:twitter]%>">
+                <i class="icon-twitter-bird"></i>
+              </a>
+            <% end %>
           </td>
 
           <td>
