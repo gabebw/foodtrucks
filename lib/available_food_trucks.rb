@@ -5,12 +5,11 @@ class AvailableFoodTrucks
 
   def initialize(city)
     @city = city
-    @doc = Nokogiri::HTML(open('http://www.cityofboston.gov/business/mobile/schedule-app-min.asp'))
   end
 
   def all
     if @city == "boston"
-      sources = truck_elements.map { |element| BostonTruckDataSource.new(element) }
+      sources = boston_truck_elements.map { |element| BostonTruckDataSource.new(element) }
     end
     trucks = sources.map { |source| FoodTruck.new(source) }
 
@@ -19,8 +18,9 @@ class AvailableFoodTrucks
 
   private
 
-  def truck_elements
-    @doc.css('.trFoodTrucks')
+  def boston_truck_elements
+    doc = Nokogiri::HTML(open('http://www.cityofboston.gov/business/mobile/schedule-app-min.asp'))
+    doc.css('.trFoodTrucks')
   end
 end
 
