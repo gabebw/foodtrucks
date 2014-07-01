@@ -18,7 +18,7 @@ must have the following methods:
 * `meal`
 * `day_available`
 * `location`
-* `data` (this should return everything in `your_city.yml`)
+* `data` (this should return everything in `your_city.yml`, as a hash)
 * `time_zone`, in a string that `Time.in_time_zone` understands
 
 Look at `BostonTruckDataSource` for how it works.
