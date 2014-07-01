@@ -26,8 +26,6 @@ get '/:name.css' do
 end
 
 get '/font/fontello.*' do
-  extension = params[:splat].first
-  path = settings.views + "/font/fontello.#{extension}"
-
-  send_file(path)
+  relative_path = request.path_info
+  send_file(settings.views + relative_path)
 end
