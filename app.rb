@@ -2,6 +2,9 @@ require 'bundler'
 Bundler.require
 
 require 'open-uri'
+require 'yaml'
+
+DATA_DIRECTORY = File.join(settings.root, "data")
 
 Dir['./lib/*'].each do |f|
   require f
