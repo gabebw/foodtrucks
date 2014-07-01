@@ -13,27 +13,7 @@
     </thead>
     <tbody>
       <% @trucks.each do |truck| %>
-        <tr>
-          <td>
-            <% if truck.data[:menu] %>
-              <a href="<%= truck.data[:menu] %>"><%= truck.name %></a>
-            <% else %>
-              <%= truck.name %>
-            <% end %>
-          </td>
-
-          <td>
-            <% if truck.data[:twitter] %>
-              <a href="https://twitter.com/<%= truck.data[:twitter]%>">
-                <i class="icon-twitter-bird"></i>
-              </a>
-            <% end %>
-          </td>
-
-          <td>
-            <%= truck.humanized_location %>
-          </td>
-        </tr>
+        <%= erb :truck, locals: { truck: truck } %>
       <% end %>
     </tbody>
   </table>
