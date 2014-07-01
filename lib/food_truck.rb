@@ -29,12 +29,7 @@ class FoodTruck
   private
 
   def location
-    @location ||= Location.new(less_human_location)
-  end
-
-  def less_human_location
-    location_without_document_write = css('.loc').text.split(';').last
-    location_without_document_write.sub(/^\(\d+\) /, '')
+    @location ||= Location.new(css('.loc').text)
   end
 
   def day_is_today?

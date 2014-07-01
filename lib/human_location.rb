@@ -7,8 +7,9 @@ class HumanLocation
     'City Hall Plaza, Fisher Park' => 'City Hall Plaza (walk up Tremont to Government Center Station)',
   }
 
-  def self.normalize(lessHumanLocation)
-    cleaned = lessHumanLocation.
+  def self.normalize(inhuman_location)
+    location_without_document_write = inhuman_location.split(';').last
+    cleaned = location_without_document_write.
       sub(/^\(\d+\) /, '').
       sub('Greenway,Congress', 'Greenway, Congress')
 
