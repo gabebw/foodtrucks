@@ -1,6 +1,6 @@
 class FoodTruck
   TIME_ZONE = "Eastern Time (US & Canada)"
-  TRUCK_DATA = YAML.load(open(File.join(DATA_DIRECTORY, "boston.yml")))
+  BOSTON_TRUCK_DATA = YAML.load(open(File.join(DATA_DIRECTORY, "boston.yml")))
 
   def initialize(xml_element)
     @element = xml_element
@@ -11,7 +11,7 @@ class FoodTruck
   end
 
   def data
-    TRUCK_DATA[name]
+    BOSTON_TRUCK_DATA[name]
   end
 
   def name
