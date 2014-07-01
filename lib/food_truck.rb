@@ -8,7 +8,7 @@ class FoodTruck
   end
 
   def data
-    @source.data[name]
+    @source.data[name] || {}
   end
 
   def name
