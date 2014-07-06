@@ -36,4 +36,3 @@ class BostonTruckDataSource
     @element.css(selector)
   end
 end
-
