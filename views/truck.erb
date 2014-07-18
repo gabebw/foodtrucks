@@ -8,10 +8,14 @@
   </td>
 
   <td>
-    <% if truck.data[:twitter] %>
-      <a href="https://twitter.com/<%= truck.data[:twitter]%>">
-        <i class="icon-twitter-bird"></i>
-      </a>
+    <% if truck.data[:social] %>
+      <% if truck.data[:social].start_with?("http") %>
+        <a href="<%= truck.data[:social]%>">
+      <% else %>
+        <a href="https://twitter.com/<%= truck.data[:social]%>">
+      <% end %>
+          <i class="icon-twitter-bird"></i>
+        </a>
     <% end %>
   </td>
 
