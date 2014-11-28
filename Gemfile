@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.1.5'
 
 gem 'activesupport', require: 'active_support/all'
 gem 'nokogiri'
