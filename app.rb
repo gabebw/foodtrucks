@@ -7,6 +7,8 @@ require 'yaml'
 
 ROOT = settings.root
 
+GEOCODER = Geokit::Geocoders::GoogleGeocoder
+
 Dir['./lib/*'].each do |f|
   require f
 end
