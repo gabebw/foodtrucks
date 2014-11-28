@@ -5,16 +5,17 @@ require "sinatra/reloader" if development?
 require 'open-uri'
 require 'yaml'
 
-ROOT = settings.root
+ROOT = File.dirname(__FILE__)
 
-GEOCODER = Geokit::Geocoders::GoogleGeocoder
+GEOCODER = Geokit::Geocoders::UsGeocoder
 
 Dir['./lib/*'].each do |f|
   require f
 end
 
 get '/' do
-  @trucks = AvailableFoodTrucks.all_for("boston").sort_by(&:distance_and_location)
+  user_location = GEOCODER.geocode("302 Western Avenue, Cambridge MA")
+  @trucks = AvailableFoodTrucks.all_for("boston", user_location).sort_by(&:distance_and_location)
 
   erb :index
 end
@@ -26,9 +27,10 @@ end
 post '/location' do
   location = params[:location]
   user_location = GEOCODER.geocode(location)
-  truck_location = GEOCODER.geocode("South Station, Boston MA")
 
-  user_location.distance_to(truck_location).to_s
+  trucks = AvailableFoodTrucks.all_for("boston", user_location).sort_by(&:distance_and_location)
+
+  trucks.map(&:distance_and_location).inspect
 end
 
 get '/font/fontello.*' do

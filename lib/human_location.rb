@@ -1,11 +1,11 @@
 class HumanLocation
   MAP = {
     'Boston Common, Brewer Fountain by Tremont and Boylston Streets' => 'Boston Common',
-    'Chinatown/Park Street, Boylston St near Washington St' => 'Chinatown Station (right on Washington until Boylston)',
-    'City Hall Plaza, Fisher Park' => 'City Hall Plaza (walk up Tremont to Government Center Station)',
-    'Financial District, Milk and Kilby Streets' => 'Milk & Kilby (left on Washington, right on Milk, go past the park)',
-    'Rose Kennedy Greenway, Congress Street near Wharf' => 'Greenway, Congress St & Atlantic Avenue',
-    'Rose Kennedy Greenway, Dewey Square, South Station' => 'South Station plaza (walk up Summer St towards DTX)',
+    'Chinatown/Park Street, Boylston St near Washington St' => 'Chinatown Station, Boston MA',
+    'City Hall Plaza, Fisher Park' => 'City Hall Plaza, Boston',
+    'Financial District, Milk and Kilby Streets' => 'Milk St at Kilby St, Boston',
+    'Rose Kennedy Greenway, Congress Street near Wharf' => 'Greenway, Congress St at Atlantic Avenue, Boston',
+    'Rose Kennedy Greenway, Dewey Square, South Station' => 'South Station, Boston',
   }
 
   def self.normalize(inhuman_location)

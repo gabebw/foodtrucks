@@ -1,19 +1,16 @@
 class Location
-  NEAR_OFFICE = /Financial|(South Station)|Greenway|(City Hall)|(Dewey Square)|(Boston Common)|Chinatown/
-
-  def initialize(ugly_location)
-    @ugly_location = ugly_location
+  def initialize(ugly_truck_location, user_location)
+    @ugly_truck_location = ugly_truck_location
+    @user_location = user_location
   end
 
   def humanized
-    HumanLocation.normalize(@ugly_location)
+    HumanLocation.normalize(@ugly_truck_location)
   end
 
-  def distance
-    Distance.weight(humanized)
-  end
-
-  def near_office?
-    @ugly_location =~ NEAR_OFFICE
+  def distance_from_user
+    p humanized
+    truck_location = GEOCODER.geocode(humanized)
+    @user_location.distance_to(truck_location)
   end
 end

@@ -1,14 +1,15 @@
 class AvailableFoodTrucks
-  def self.all_for(city)
-    new(city).all
+  def self.all_for(city, user_location = "302 Western Avenue, Cambridge MA 02139")
+    new(city, user_location).all
   end
 
-  def initialize(city)
+  def initialize(city, user_location)
     @city = city
+    @user_location = user_location
   end
 
   def all
-    trucks = sources.map { |source| FoodTruck.new(source) }
+    trucks = sources.map { |source| FoodTruck.new(source, @user_location) }
     trucks.select(&:available?)
   end
 

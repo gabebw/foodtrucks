@@ -1,10 +1,11 @@
 class FoodTruck
-  def initialize(source)
+  def initialize(source, user_location)
     @source = source
+    @user_location = user_location
   end
 
   def available?
-    day_is_today? && available_for_lunch? && near_office?
+    day_is_today? && available_for_lunch? && near_user?
   end
 
   def data
@@ -20,13 +21,13 @@ class FoodTruck
   end
 
   def distance_and_location
-    [location.distance, location.humanized]
+    [location.distance_from_user, location.humanized]
   end
 
   private
 
   def location
-    @location ||= Location.new(@source.location)
+    @location ||= Location.new(@source.location, @user_location)
   end
 
   def day_is_today?
@@ -37,8 +38,8 @@ class FoodTruck
     @source.meal == 'Lunch'
   end
 
-  def near_office?
-    location.near_office?
+  def near_user?
+    location.distance_from_user < 10
   end
 
   def day_of_week
