@@ -1,4 +1,5 @@
 class BostonTruckDataSource
+  DATA_DIRECTORY = File.join(ROOT, "data")
   BOSTON_TRUCK_DATA = YAML.load(open(File.join(DATA_DIRECTORY, "boston.yml")))
   TIME_ZONE = "Eastern Time (US & Canada)"
 
