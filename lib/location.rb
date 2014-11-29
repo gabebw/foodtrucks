@@ -5,12 +5,12 @@ class Location
     @ugly_truck_location = ugly_truck_location
   end
 
-  def humanized
-    HumanLocation.normalize(@ugly_truck_location)
+  def prettified
+    PrettyLocation.prettify(@ugly_truck_location)
   end
 
   def distance
-    Distance.weight(humanized)
+    Distance.weight(prettified)
   end
 
   def near_office?

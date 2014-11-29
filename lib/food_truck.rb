@@ -15,12 +15,12 @@ class FoodTruck
     @source.name
   end
 
-  def humanized_location
-    location.humanized
+  def pretty_location
+    location.prettified
   end
 
   def distance_and_location
-    [location.distance, location.humanized]
+    [location.distance, location.prettified]
   end
 
   private

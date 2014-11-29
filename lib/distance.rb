@@ -11,7 +11,7 @@ class Distance
 
   DEFAULT_WEIGHT = 3
 
-  def self.weight(humanized_location)
-    WEIGHT.fetch(humanized_location, DEFAULT_WEIGHT)
+  def self.weight(pretty_location)
+    WEIGHT.fetch(pretty_location, DEFAULT_WEIGHT)
   end
 end

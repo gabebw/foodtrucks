@@ -1,4 +1,4 @@
-class HumanLocation
+class PrettyLocation
   MAP = {
     'Boston Common, Brewer Fountain by Tremont and Boylston Streets' => 'Boston Common',
     'Chinatown/Park Street, Boylston St near Washington St' => 'Chinatown Station (right on Washington until Boylston)',
@@ -8,7 +8,7 @@ class HumanLocation
     'Rose Kennedy Greenway, Dewey Square, South Station' => 'South Station plaza (walk up Summer St towards DTX)',
   }
 
-  def self.normalize(inhuman_location)
+  def self.prettify(inhuman_location)
     location_without_document_write = inhuman_location.split(';').last
     cleaned = location_without_document_write.
       sub(/^\(\d+\) /, '').
