@@ -1,12 +1,12 @@
 class Location
   NEAR_OFFICE = /Financial|(South Station)|Greenway|(City Hall)|(Dewey Square)|(Boston Common)|Chinatown/
 
-  def initialize(ugly_location)
-    @ugly_location = ugly_location
+  def initialize(ugly_truck_location)
+    @ugly_truck_location = ugly_truck_location
   end
 
   def humanized
-    HumanLocation.normalize(@ugly_location)
+    HumanLocation.normalize(@ugly_truck_location)
   end
 
   def distance
@@ -14,6 +14,6 @@ class Location
   end
 
   def near_office?
-    @ugly_location =~ NEAR_OFFICE
+    @ugly_truck_location =~ NEAR_OFFICE
   end
 end
