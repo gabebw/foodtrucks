@@ -1,15 +1,15 @@
 <tr>
   <td>
-    <% if truck.data[:menu] %>
-      <a href="<%= truck.data[:menu] %>"><%= truck.name %></a>
+    <% if truck.menu %>
+      <a href="<%= truck.menu %>"><%= truck.name %></a>
     <% else %>
       <%= truck.name %>
     <% end %>
   </td>
 
   <td>
-    <% if truck.data[:twitter] %>
-      <a href="https://twitter.com/<%= truck.data[:twitter]%>">
+    <% if truck.twitter %>
+      <a href="https://twitter.com/<%= truck.twitter %>">
         <i class="icon-twitter-bird"></i>
       </a>
     <% end %>

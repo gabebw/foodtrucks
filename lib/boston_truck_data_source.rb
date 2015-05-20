@@ -24,7 +24,7 @@ class BostonTruckDataSource
   end
 
   def data
-    BOSTON_TRUCK_DATA
+    BOSTON_TRUCK_DATA[name] || {}
   end
 
   def time_zone

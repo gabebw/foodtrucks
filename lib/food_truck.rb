@@ -7,10 +7,6 @@ class FoodTruck
     day_is_today? && available_for_lunch? && near_office?
   end
 
-  def data
-    @source.data[name] || {}
-  end
-
   def name
     @source.name
   end
@@ -23,7 +19,19 @@ class FoodTruck
     [location.distance, location.prettified]
   end
 
+  def menu
+    data[:menu]
+  end
+
+  def twitter
+    data[:twitter]
+  end
+
   private
+
+  def data
+    @source.data
+  end
 
   def location
     @location ||= Location.new(@source.location)
