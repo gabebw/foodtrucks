@@ -1,4 +1,5 @@
 $twitter-blue: #55ACEE;
+$facebook-blue: #3B5998;
 $sans-serif: "Helvetica Neue", Helvetica, sans-serif;
 
 #container {
@@ -20,8 +21,13 @@ td a:visited {
   color: blue;
 }
 
-a i {
+// Both icons are from Brandico on Fontello
+i.icon-twitter-bird {
   color: $twitter-blue;
+}
+
+i.icon-facebook {
+  color: $facebook-blue;
 }
 
 @media only screen

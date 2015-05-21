@@ -8,9 +8,13 @@
   </td>
 
   <td>
-    <% if truck.twitter %>
-      <a href="https://twitter.com/<%= truck.twitter %>">
+    <% if truck.twitter_link %>
+      <a href="<%= truck.twitter_link %>">
         <i class="icon-twitter-bird"></i>
+      </a>
+    <% elsif truck.facebook_link %>
+      <a href="<%= truck.facebook_link %>">
+        <i class="icon-facebook"></i>
       </a>
     <% end %>
   </td>

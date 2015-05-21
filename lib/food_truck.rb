@@ -23,8 +23,16 @@ class FoodTruck
     data[:menu]
   end
 
-  def twitter
-    data[:twitter]
+  def twitter_link
+    if data[:twitter]
+      "https://twitter.com/#{data[:twitter]}"
+    end
+  end
+
+  def facebook_link
+    if data[:facebook]
+      "https://www.facebook.com/#{data[:facebook]}"
+    end
   end
 
   private
