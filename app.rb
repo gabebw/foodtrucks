@@ -11,7 +11,7 @@ Dir['./lib/*'].each do |f|
 end
 
 get '/' do
-  @trucks = AvailableFoodTrucks.all_for("boston").sort_by(&:distance_and_location)
+  @trucks = AvailableFoodTrucks.in("boston").sorted
 
   erb :index
 end

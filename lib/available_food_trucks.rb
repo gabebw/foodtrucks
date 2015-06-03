@@ -1,6 +1,6 @@
 class AvailableFoodTrucks
-  def self.all_for(city)
-    new(city).all
+  def self.in(city)
+    new(city)
   end
 
   def initialize(city)
@@ -10,6 +10,10 @@ class AvailableFoodTrucks
   def all
     trucks = sources.map { |source| FoodTruck.new(source) }
     trucks.select(&:available?)
+  end
+
+  def sorted
+    all.sort_by(&:distance_and_location)
   end
 
   private
